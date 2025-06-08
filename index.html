@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Głosowanie</title>
+</head>
+<body>
+  <h1>Głosowanie</h1>
+  <input type="email" id="email" placeholder="Email">
+  <input type="password" id="password" placeholder="Hasło">
+  <button onclick="signIn()">Zaloguj</button>
+
+  <div id="vote-section" style="display: none;">
+    <h2>Oddaj głos</h2>
+    <button onclick="castVote('hubebertx')">Głosuj na hubebertx</button>
+    <button onclick="castVote('kryhol1234')">Głosuj na kryhol1234</button>
+  </div>
+
+<!-- Supabase CDN -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+<script>
+  const SUPABASE_URL = 'https://svqvzsaqfvkhjqhidera.supabase.co';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN2cXZ6c2FxZnZraGpxaGlkZXJhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk0MTM2MzAsImV4cCI6MjA2NDk4OTYzMH0.HMUw3Mkw3dIBpsiaUQI_S-De8Wbi7BcNlKegxbks86k';
+
+  // ✅ Poprawnie przez window
+  const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    async function signIn() {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+      if (error) alert('Błąd logowania: ' + error.message);
+      else checkVoteStatus();
+    }
+
+    async function checkVoteStatus() {
+      const { data: { user } } = await supabase.auth.getUser();
+      const { data, error } = await supabase
+        .from('votes')
+        .select('*')
+        .eq('user_id', user.id);
+
+      if (error) return alert('Błąd sprawdzania głosu');
+      if (data.length > 0) {
+        alert('Już głosowałeś!');
+      } else {
+        document.getElementById('vote-section').style.display = 'block';
+      }
+    }
+
+    async function castVote(vote) {
+      const { data: { user } } = await supabase.auth.getUser();
+      const { error } = await supabase
+        .from('votes')
+        .insert({ user_id: user.id, vote});
+
+      if (error) return alert('Błąd głosowania: ' + error.message);
+      alert('Dziękujemy za głos!');
+      document.getElementById('vote-section').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
