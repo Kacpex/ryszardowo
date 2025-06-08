@@ -23,7 +23,6 @@
   const SUPABASE_URL = 'https://svqvzsaqfvkhjqhidera.supabase.co';
   const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN2cXZ6c2FxZnZraGpxaGlkZXJhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk0MTM2MzAsImV4cCI6MjA2NDk4OTYzMH0.HMUw3Mkw3dIBpsiaUQI_S-De8Wbi7BcNlKegxbks86k';
 
-  // ✅ Poprawnie przez window
   const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
     async function signIn() {
       const email = document.getElementById('email').value;
