@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event</title>
+    <link rel="icon" type="image/png" href="src/icon.png">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        body {
+            background-image: url(src/Stars.webp);
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            background-size: cover;
+            color:white;
+        }
+
+        .content {
+            padding: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Zakładki -->
+    <div align="center">
+        <button style="font-size:20px; padding:10px 20px;" onclick="showTab('event')">Event</button>
+        <button style="font-size:20px; padding:10px 20px;" onclick="showTab('przepisy')">Recipe</button>
+        <button style="font-size:20px; padding:10px 20px;" onclick="showTab('przedmioty')">Items</button>
+    </div>
+
+    <!-- Treść zakładek -->
+    <div class="content">
+        <div id="event"> 
+            <h1>Event do 31-10-2025</h1>
+            <p>Event polega na zbieraniu kamieni. Aby zdobyć kosmiczne kamienie trzeba zdobywać meteoryt i przepalić go w lavie. Kamienie mają specjalne craftingi na wyższy poziom kamienia. Można zdobyć wiele itemów (opisanych w zakładce przedmioty). Przepisy do itemów są w zakładce Przepisy</p>
+        </div>
+        <div id="przepisy" style="display:none;">
+            <h1>Recipes</h1>
+            <p>
+                <img src="src/stone1.png" width="60%" height=auto> Cosmic Stone lvl.1</img>
+                <img src="src/stone2.png" width="60%" height=auto> Cosmic Stone lvl.2</img>
+                <img src="src/stone3.png" width="60%" height=auto> Cosmic Stone lvl.3</img>
+                <img src="src/stone4.png" width="60%" height=auto> Cosmic Stone lvl.4</img>
+                <img src="src/stone5.png" width="60%" height=auto> Cosmic Stone lvl.5</img>
+                <img src="src/tropper.png" width="60%" height=auto> Stormtrooper Helmet</img>
+                <img src="src/droid.png" width="60%" height=auto> Battle Droid Pickaxe</img>
+                <img src="src/green.png" width="60%" height=auto> Green Lightsaber</img>
+                <img src="src/blue.png" width="60%" height=auto> Blue Lightsaber</img>
+                <img src="src/red.png" width="60%" height=auto> Red Lightsaber</img>
+                <img src="src/ryszard.png" width="60%" height=auto> RyszardStar Picture</img>
+                <h2 style="color: blue; font-size: 10vw;"><b>VERY RARE ITEMS</b></h2>
+                <img src="src/c3po.png" width="60%" height=auto> C3PO</img>
+                <img src="src/droid2.png" width="60%" height=auto> BX-series Droid Commando</img>
+            </p>
+        </div>
+        <div id="przedmioty" style="display:none;">
+            <h1>Items</h1><h1><b>MOŻLIWE DO ZDOBYCIA TYLKO NA CZAS EVENTU!!</b></h1>
+            <p>
+                <h2>Cosmic Stones:</h2><p>Brak funkcji. Stosowane do zdobycia innych itemów</p>
+                <h2>Stormtrooper Helmet:</h2><p>Nie posiada funkcji obronnych. Hełm ozdobny</p>
+                <h2>Battle Droid Pickaxe:</h2><p>Wytrzymałość podobna do żelaznego kilofa. Prędkość kopania na poziomie kilofa diamentowego</p>
+                <h2>Lightsabers:</h2><p>Obrażenie lekko mniejsze od miecza drewnianego. Prędkość bicia superszybka</p>
+                <h2>RyszardStar Picture:</h2><p>Obraz ozdobny. Aby postawić wymagany item frame</p>
+                <h2><b>RARE HELMETS:</b> Nie posiadają funkcji obronnych. Odporne na ogień</h2>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tab) {
+            document.getElementById("event").style.display = "none";
+            document.getElementById("przepisy").style.display = "none";
+            document.getElementById("przedmioty").style.display = "none";
+            document.getElementById(tab).style.display = "block";
+        }
+    </script>
+</body>
+
+
+</html>
